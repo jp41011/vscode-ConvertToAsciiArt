@@ -1,0 +1,81 @@
+{
+	"name": "converttoascii",
+	"displayName": "Convert To ASCII",
+	"description": "Convert To ASCII extension.",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.35.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.helloWorld"
+		,"onCommand:extension.convertToAscii"
+		,"onCommand:extension.convertToAscii_Favorite"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.helloWorld",
+				"title": "Hello World"
+			}
+			,{
+				"command": "extension.convertToAscii",
+				"title": "Convert to ASCII"
+			}
+		]
+		,"keybindings": [
+			{
+				"command": "extension.convertToAscii_Favorite",
+				"key": "Ctrl+Alt+1"
+			}
+			,{
+				"command": "extension.convertToAscii",
+				"key": "Ctrl+Alt+2"
+			}
+		]
+		,"configuration": {
+			"type": "object",
+			"title": "Convert To ASCII - Configuration",
+			"properties": {
+				"convertToAscii.favoriteFont": {
+					"type":"string"
+					,"default": "Graffiti"
+					,"description": "Default ASCII Font."
+				}
+				,"convertToAscii.favoriteHorizontalLayout": {
+					"type":"string"
+					,"enum": ["default", "full", "fitted", "controlled smushing", "universal smushing"]
+					,"default": "default"
+					,"description": "A string value that indicates the horizontal layout to use."
+
+				}
+				,"convertToAscii.favoriteVerticalLayout": {
+					"type": "string"
+					,"enum": ["default", "full", "fitted", "controlled smushing", "universal smushing"]
+					,"default": "default"
+					,"description": "A string value that indicates the vertical layout to use."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+	,"dependencies": {
+		"figlet": "^1.1.1"
+	}
+}
