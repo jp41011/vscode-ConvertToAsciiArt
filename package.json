@@ -33,7 +33,7 @@
 			}
 			,{
 				"command": "extension.convertToAscii",
-				"key": "Ctrl+Alt+2"
+				"key": "Ctrl+Alt+a"
 			}
 		]
 		,"configuration": {
@@ -42,21 +42,21 @@
 			"properties": {
 				"convertToAscii.favoriteFont": {
 					"type":"string"
-					,"default": "Graffiti"
-					,"description": "Default ASCII Font."
+					,"default": "Standard"
+					,"description": "Favorite ASCII font."
 				}
 				,"convertToAscii.favoriteHorizontalLayout": {
 					"type":"string"
 					,"enum": ["default", "full", "fitted", "controlled smushing", "universal smushing"]
 					,"default": "default"
-					,"description": "A string value that indicates the horizontal layout to use."
+					,"description": "A string value that indicates the horizontal layout to use with all fonts."
 
 				}
 				,"convertToAscii.favoriteVerticalLayout": {
 					"type": "string"
 					,"enum": ["default", "full", "fitted", "controlled smushing", "universal smushing"]
 					,"default": "default"
-					,"description": "A string value that indicates the vertical layout to use."
+					,"description": "A string value that indicates the vertical layout to use with all fonts."
 				}
 			}
 		}
