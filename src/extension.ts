@@ -40,7 +40,7 @@ export function activate(context: vscode.ExtensionContext) {
 			//fontSelection.label
 			convertToAscii(fontSelection.label);
 		});
-		console.log('convertToAscii End');
+		//console.log('convertToAscii End');
 	});
 
 	// Convert to ASCII using user's config (favorite) settings.
