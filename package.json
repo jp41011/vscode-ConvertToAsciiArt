@@ -18,22 +18,18 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
-			}
-			,{
 				"command": "extension.convertToAscii",
 				"title": "Convert to ASCII"
 			}
 		]
 		,"keybindings": [
 			{
-				"command": "extension.convertToAscii_Favorite",
-				"key": "Ctrl+Alt+1"
-			}
-			,{
 				"command": "extension.convertToAscii",
 				"key": "Ctrl+Alt+a"
+			}
+			,{
+				"command": "extension.convertToAscii_Favorite",
+				"key": "Ctrl+Alt+1"
 			}
 		]
 		,"configuration": {
@@ -43,7 +39,7 @@
 				"convertToAscii.favoriteFont": {
 					"type":"string"
 					,"default": "Standard"
-					,"description": "Favorite ASCII font."
+					,"description": "Favorite ASCII font (case sensitive)."
 				}
 				,"convertToAscii.favoriteHorizontalLayout": {
 					"type":"string"
