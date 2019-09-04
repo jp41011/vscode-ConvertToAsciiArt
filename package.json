@@ -1,5 +1,6 @@
 {
 	"name": "converttoascii",
+	"publisher": "BitBelt",
 	"displayName": "Convert To ASCII",
 	"description": "Convert To ASCII extension.",
 	"version": "0.0.1",
