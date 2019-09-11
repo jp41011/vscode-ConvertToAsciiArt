@@ -3,9 +3,9 @@
 
 ## Feautres
 
-Converts text into ASCII art.
+Converts text to ASCII art.
 
-`Ctrl+Alt+a`:  Activate extention to convert selected text.
+`Ctrl+Alt+a`: Activate extention to convert selected text.
 
 \!\[feature X\]\(images/feature-x.png\)
 
@@ -13,7 +13,7 @@ Converts text into ASCII art.
 
 \!\[feature X\]\(images/feature-x.png\)
 
-
+---
 ## Extension Settings
 
 This extension contributes the following settings:
@@ -22,12 +22,16 @@ This extension contributes the following settings:
 * `convertToAscii.favoriteHorizontalLayout` : Favorite horizontal layout setting.
 * `convertToAscii.favoriteVerticalLayout` : Favorite vertical layout setting.
 
-
+---
 ## Release Notes
 
 ### 0.0.1
 Initial release
 
----
+
 
 **Enjoy!**
+
+---
+
+Tags: ASCII converter, text to ASCII, text converter.
