@@ -3,13 +3,13 @@
 	"publisher": "BitBelt",
 	"displayName": "Convert To ASCII",
 	"description": "Convert To ASCII extension.",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"engines": {
 		"vscode": "^1.35.0"
 	},
 	"galleryBanner": {
 		"color": "#005696",
-		"theme": "light"
+		"theme": "dark"
 	},
 	"categories": [
 		"Formatters","Other"
