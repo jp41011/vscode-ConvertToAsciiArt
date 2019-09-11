@@ -7,9 +7,23 @@
 	"engines": {
 		"vscode": "^1.35.0"
 	},
+	"galleryBanner": {
+		"color": "#005696",
+		"theme": "light"
+	},
 	"categories": [
-		"Other"
+		"Formatters","Other"
 	],
+	"keywords": [
+        "ASCII",
+        "Converter",
+        "Convert to ASCII",
+        "Text to ASCII"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jp41011/vscode-ConvertToAscii"
+    },
 	"activationEvents": [
 		"onCommand:extension.helloWorld"
 		,"onCommand:extension.convertToAscii"
