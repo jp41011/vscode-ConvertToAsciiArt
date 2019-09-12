@@ -1,9 +1,9 @@
 {
-	"name": "converttoascii",
+	"name": "converttoasciiart",
 	"publisher": "BitBelt",
-	"displayName": "Convert To ASCII",
-	"description": "Convert To ASCII extension.",
-	"version": "0.0.3",
+	"displayName": "Convert To ASCII Art",
+	"description": "Utility extension to convert text to ASCII art.",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.35.0"
 	},
@@ -15,55 +15,56 @@
 		"Formatters","Other"
 	],
 	"keywords": [
-        "ASCII",
+        "ASCII Art",
         "Converter",
-        "Convert to ASCII",
-        "Text to ASCII"
+        "Convert to ASCII Art",
+        "Text to ASCII Art"
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/jp41011/vscode-ConvertToAscii"
+        "url": "https://github.com/jp41011/vscode-ConvertToAsciiArt"
     },
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
-		,"onCommand:extension.convertToAscii"
-		,"onCommand:extension.convertToAscii_Favorite"
+		"onCommand:extension.convertToAsciiArt"
+		,"onCommand:extension.convertToAsciiArt_Favorite"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.convertToAscii",
-				"title": "Convert to ASCII"
+				"command": "extension.convertToAsciiArt",
+				"title": "Convert to ASCII Art"
 			}
 		]
 		,"keybindings": [
 			{
-				"command": "extension.convertToAscii",
-				"key": "Ctrl+Alt+a"
+				"command": "extension.convertToAsciiArt",
+				"key": "Ctrl+Alt+a",
+				"when": "editorHasSelection"
 			}
 			,{
-				"command": "extension.convertToAscii_Favorite",
-				"key": "Ctrl+Alt+1"
+				"command": "extension.convertToAsciiArt_Favorite",
+				"key": "Ctrl+Alt+1",
+				"when": "editorHasSelection"
 			}
 		]
 		,"configuration": {
 			"type": "object",
-			"title": "Convert To ASCII - Configuration",
+			"title": "Convert To ASCII Art - Configuration",
 			"properties": {
-				"convertToAscii.favoriteFont": {
+				"convertToAsciiArt.favoriteFont": {
 					"type":"string"
 					,"default": "Standard"
 					,"description": "Favorite ASCII font (case sensitive)."
 				}
-				,"convertToAscii.favoriteHorizontalLayout": {
+				,"convertToAsciiArt.favoriteHorizontalLayout": {
 					"type":"string"
 					,"enum": ["default", "full", "fitted", "controlled smushing", "universal smushing"]
 					,"default": "default"
 					,"description": "A string value that indicates the horizontal layout to use with all fonts."
 
 				}
-				,"convertToAscii.favoriteVerticalLayout": {
+				,"convertToAsciiArt.favoriteVerticalLayout": {
 					"type": "string"
 					,"enum": ["default", "full", "fitted", "controlled smushing", "universal smushing"]
 					,"default": "default"

@@ -1,6 +1,3 @@
-# Convert To ASCII README
-
-
 ## Feautres
 
 Converts text to ASCII art.
@@ -18,9 +15,9 @@ Converts text to ASCII art.
 
 This extension contributes the following settings:
 
-* `convertToAscii.favoriteFont` : Favorite font (case sensitive).
-* `convertToAscii.favoriteHorizontalLayout` : Favorite horizontal layout setting.
-* `convertToAscii.favoriteVerticalLayout` : Favorite vertical layout setting.
+* `convertToAsciiArt.favoriteFont` : Favorite font (case sensitive).
+* `convertToAsciiArt.favoriteHorizontalLayout` : Favorite horizontal layout setting.
+* `convertToAsciiArt.favoriteVerticalLayout` : Favorite vertical layout setting.
 
 
 ## Release Notes
