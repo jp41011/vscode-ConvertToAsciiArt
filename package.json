@@ -3,10 +3,11 @@
 	"publisher": "BitBelt",
 	"displayName": "Convert To ASCII Art",
 	"description": "Utility extension to convert text to ASCII art.",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.35.0"
 	},
+	"icon": "resources/icon_ConvertToASCIIArt.png",
 	"galleryBanner": {
 		"color": "#005696",
 		"theme": "dark"

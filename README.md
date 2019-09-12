@@ -1,3 +1,5 @@
+[![](https://vsmarketplacebadge.apphb.com/downloads/BitBelt.converttoasciiart.svg)](https://marketplace.visualstudio.com/items?itemName=BitBelt.converttoasciiart)
+
 ## Feautres
 
 Converts text to ASCII art.
