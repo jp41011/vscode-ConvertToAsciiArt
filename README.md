@@ -30,11 +30,11 @@ To this:
 ## Extension Activation
 
 `Ctrl+Alt+a`: Activate extention to convert selected text.
-![Activate Extension](resources\activateExtension.gif)
+![Activate Extension](resources/activateExtension.gif)
 
 
 `Ctrl+Alt+1`: Convert selected text using favorite ASCII font settings.
-![Activate Extension with favorite font](resources\activateExtension_keyboardShortcut.gif)
+![Activate Extension with favorite font](resources/activateExtension_keyboardShortcut.gif)
 
 
 ## Extension Settings
