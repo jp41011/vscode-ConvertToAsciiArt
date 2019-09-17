@@ -3,7 +3,7 @@
 	"publisher": "BitBelt",
 	"displayName": "Convert To ASCII Art",
 	"description": "Utility extension to convert text to ASCII art.",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"engines": {
 		"vscode": "^1.35.0"
 	},
