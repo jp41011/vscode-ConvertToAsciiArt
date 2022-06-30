@@ -1,6 +1,6 @@
 [![](https://vsmarketplacebadge.apphb.com/downloads/BitBelt.converttoasciiart.svg)](https://marketplace.visualstudio.com/items?itemName=BitBelt.converttoasciiart)
 
-## Feautres
+## Features
 
 Converts text to ASCII art.
 
@@ -46,3 +46,10 @@ This extension contributes the following settings:
 * `convertToAsciiArt.favoriteVerticalLayout` : Favorite vertical layout setting.
 
 **Enjoy!**
+
+## Font Previews
+
+To preview the available fonts, run `brew install figlet && showfigfonts > font-previews.txt`.
+
+You can find the latest fonts in this repo at [font-previews.txt](./font-previews.txt).
+
