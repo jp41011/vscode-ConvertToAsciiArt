@@ -35,6 +35,10 @@
 			{
 				"command": "extension.convertToAsciiArt",
 				"title": "Convert to ASCII Art"
+			},
+			{
+				"command": "extension.convertToAsciiArt_Favorite",
+				"title": "Convert to ASCII Art with Favorite Font"
 			}
 		]
 		,"keybindings": [
