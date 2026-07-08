@@ -1,10 +1,9 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as figlet from 'figlet';
 import Window = vscode.window;
 import QuickPickItem = vscode.QuickPickItem;
-
-var figlet = require('figlet');
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -70,8 +69,8 @@ export function activate(context: vscode.ExtensionContext) {
 			// Get user config settings
 			let userConfig = vscode.workspace.getConfiguration('convertToAsciiArt');
 			//let favoriteFont = userConfig.get('favoriteFont');
-			let favoriteHorizontalLayout = userConfig.get('favoriteHorizontalLayout');
-			let favoriteVerticalLayout = userConfig.get('favoriteVerticalLayout');
+			let favoriteHorizontalLayout = userConfig.get<figlet.KerningMethods>('favoriteHorizontalLayout');
+			let favoriteVerticalLayout = userConfig.get<figlet.KerningMethods>('favoriteVerticalLayout');
 
 			// get ASCII text
 			let asciiText = figlet.textSync(selectedText, {font: fontSelection
