@@ -1,4 +1,4 @@
-[![](https://vsmarketplacebadge.apphb.com/downloads/BitBelt.converttoasciiart.svg)](https://marketplace.visualstudio.com/items?itemName=BitBelt.converttoasciiart)
+[![](https://vsmarketplacebadges.dev/downloads/BitBelt.converttoasciiart.svg)](https://marketplace.visualstudio.com/items?itemName=BitBelt.converttoasciiart)
 
 ## Feautres
 
