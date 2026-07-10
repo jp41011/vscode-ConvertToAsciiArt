@@ -1,98 +1,110 @@
 {
-	"name": "converttoasciiart",
-	"publisher": "BitBelt",
-	"displayName": "Convert To ASCII Art",
-	"description": "Utility extension to convert text to ASCII art.",
-	"version": "1.0.3",
-	"engines": {
-		"vscode": "^1.35.0"
-	},
-	"icon": "resources/icon_ConvertToASCIIArt.png",
-	"galleryBanner": {
-		"color": "#005696",
-		"theme": "dark"
-	},
-	"categories": [
-		"Formatters","Other"
-	],
-	"keywords": [
-        "ASCII Art",
-        "Converter",
-        "Convert to ASCII Art",
-        "Text to ASCII Art"
+  "name": "converttoasciiart",
+  "publisher": "BitBelt",
+  "displayName": "Convert To ASCII Art",
+  "description": "Utility extension to convert text to ASCII art.",
+  "version": "1.1.0",
+  "engines": {
+    "vscode": "^1.35.0"
+  },
+  "icon": "resources/icon_ConvertToASCIIArt.png",
+  "galleryBanner": {
+    "color": "#005696",
+    "theme": "dark"
+  },
+  "categories": [
+    "Formatters",
+    "Other"
+  ],
+  "keywords": [
+    "ASCII Art",
+    "Converter",
+    "Convert to ASCII Art",
+    "Text to ASCII Art"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jp41011/vscode-ConvertToAsciiArt"
+  },
+  "activationEvents": [
+    "onCommand:extension.convertToAsciiArt",
+    "onCommand:extension.convertToAsciiArt_Favorite"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.convertToAsciiArt",
+        "title": "Convert to ASCII Art"
+      },
+      {
+        "command": "extension.convertToAsciiArt_Favorite",
+        "title": "Convert to ASCII Art with Favorite Font"
+      }
     ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/jp41011/vscode-ConvertToAsciiArt"
-    },
-	"activationEvents": [
-		"onCommand:extension.convertToAsciiArt"
-		,"onCommand:extension.convertToAsciiArt_Favorite"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "extension.convertToAsciiArt",
-				"title": "Convert to ASCII Art"
-			},
-			{
-				"command": "extension.convertToAsciiArt_Favorite",
-				"title": "Convert to ASCII Art with Favorite Font"
-			}
-		]
-		,"keybindings": [
-			{
-				"command": "extension.convertToAsciiArt",
-				"key": "Ctrl+Alt+a",
-				"when": "editorHasSelection"
-			}
-			,{
-				"command": "extension.convertToAsciiArt_Favorite",
-				"key": "Ctrl+Alt+1",
-				"when": "editorHasSelection"
-			}
-		]
-		,"configuration": {
-			"type": "object",
-			"title": "Convert To ASCII Art - Configuration",
-			"properties": {
-				"convertToAsciiArt.favoriteFont": {
-					"type":"string"
-					,"default": "Standard"
-					,"description": "Favorite ASCII font (case sensitive)."
-				}
-				,"convertToAsciiArt.favoriteHorizontalLayout": {
-					"type":"string"
-					,"enum": ["default", "full", "fitted", "controlled smushing", "universal smushing"]
-					,"default": "default"
-					,"description": "A string value that indicates the horizontal layout to use with all fonts."
-
-				}
-				,"convertToAsciiArt.favoriteVerticalLayout": {
-					"type": "string"
-					,"enum": ["default", "full", "fitted", "controlled smushing", "universal smushing"]
-					,"default": "default"
-					,"description": "A string value that indicates the vertical layout to use with all fonts."
-				}
-			}
-		}
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/figlet": "^1.7.0",
-		"@types/node": "^20.19.43",
-		"@types/vscode": "1.35.0",
-		"@vscode/test-electron": "^2.5.2",
-		"typescript": "^5.9.3"
-	}
-	,"dependencies": {
-		"figlet": "^1.11.0"
-	}
+    "keybindings": [
+      {
+        "command": "extension.convertToAsciiArt",
+        "key": "Ctrl+Alt+a",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "extension.convertToAsciiArt_Favorite",
+        "key": "Ctrl+Alt+1",
+        "when": "editorHasSelection"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Convert To ASCII Art - Configuration",
+      "properties": {
+        "convertToAsciiArt.favoriteFont": {
+          "type": "string",
+          "default": "Standard",
+          "description": "Favorite ASCII font (case sensitive)."
+        },
+        "convertToAsciiArt.favoriteHorizontalLayout": {
+          "type": "string",
+          "enum": [
+            "default",
+            "full",
+            "fitted",
+            "controlled smushing",
+            "universal smushing"
+          ],
+          "default": "default",
+          "description": "A string value that indicates the horizontal layout to use with all fonts."
+        },
+        "convertToAsciiArt.favoriteVerticalLayout": {
+          "type": "string",
+          "enum": [
+            "default",
+            "full",
+            "fitted",
+            "controlled smushing",
+            "universal smushing"
+          ],
+          "default": "default",
+          "description": "A string value that indicates the vertical layout to use with all fonts."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.7.0",
+    "@types/node": "^20.19.43",
+    "@types/vscode": "1.35.0",
+    "@vscode/test-electron": "^2.5.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "figlet": "^1.11.0"
+  }
 }
