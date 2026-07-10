@@ -92,8 +92,10 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "compile": "tsc -p ./ && npm run bundle && npm run copy-figlet-fonts",
+    "bundle": "esbuild ./src/extension.ts --bundle --platform=node --format=cjs --target=es6 --external:vscode --outfile=out/extension.js --sourcemap",
+    "copy-figlet-fonts": "node ./scripts/copy-figlet-fonts.js",
+    "watch": "npm run copy-figlet-fonts && tsc -watch -p ./",
     "pretest": "npm run compile",
     "test": "node ./out/test/runTest.js"
   },
@@ -102,9 +104,8 @@
     "@types/node": "^20.19.43",
     "@types/vscode": "1.35.0",
     "@vscode/test-electron": "^2.5.2",
+    "esbuild": "^0.25.11",
+    "figlet": "^1.11.0",
     "typescript": "^5.9.3"
-  },
-  "dependencies": {
-    "figlet": "^1.11.0"
   }
 }

@@ -1,9 +1,16 @@
 .vscode/**
 .vscode-test/**
+node_modules/**
 out/test/**
 src/**
+scripts/**
+.dex/**
 .gitignore
+AGENTS.md
 vsc-extension-quickstart.md
+*.vsix
+*.zip
+converttoasciiart-*/
 **/tsconfig.json
 **/tslint.json
 **/*.map
