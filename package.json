@@ -46,11 +46,13 @@
       {
         "command": "extension.convertToAsciiArt",
         "key": "Ctrl+Alt+a",
+        "mac": "Cmd+Alt+a",
         "when": "editorHasSelection"
       },
       {
         "command": "extension.convertToAsciiArt_Favorite",
         "key": "Ctrl+Alt+1",
+        "mac": "Cmd+Alt+1",
         "when": "editorHasSelection"
       }
     ],
