@@ -56,40 +56,79 @@ export function activate(context: vscode.ExtensionContext) {
 		convertToAsciiArt(temp2);
 	});
 
+	let disposableConvertToAsciiArt_Favorite_Comment = 
+		vscode.commands.registerCommand('extension.convertToAsciiArt_Favorite_Comment', () => 
+		{
+			let favoriteFontProp = vscode.workspace.getConfiguration('convertToAsciiArt')
+									.get('favoriteFont');
+			let favoriteFont:string = String(favoriteFontProp);
+			convertToAsciiArtComment(favoriteFont);
+		});
+
 	// Converts selected text into ASCII using the given fontSelection.
-	function convertToAsciiArt(fontSelection: string|undefined)
+	function convertToAsciiArt(fontSelection: string|undefined): Thenable<vscode.Range | undefined>
 	{
 		// Get the active text editor
 		let editor = vscode.window.activeTextEditor;
 
-		if (editor) {
-			let document = editor.document;
-			let selection = editor.selection;
-
-			// Get the selectedText within the selection
-			let selectedText = document.getText(selection);
-			
-			// Get user config settings
-			let userConfig = vscode.workspace.getConfiguration('convertToAsciiArt');
-			//let favoriteFont = userConfig.get('favoriteFont');
-			let favoriteHorizontalLayout = userConfig.get<figlet.KerningMethods>('favoriteHorizontalLayout');
-			let favoriteVerticalLayout = userConfig.get<figlet.KerningMethods>('favoriteVerticalLayout');
-
-			// get ASCII text
-			let asciiText = figlet.textSync(selectedText, {font: fontSelection
-													, horizontalLayout: favoriteHorizontalLayout
-													, verticalLayout: favoriteVerticalLayout
-												});
-			
-			// replace selected text with ASCII text
-			editor.edit(editBuilder => {
-				editBuilder.replace(selection, asciiText);
-			});
+		if (!editor) {
+			return Promise.resolve(undefined);
 		}
+
+		let document = editor.document;
+		let selection = editor.selection;
+
+		// Get the selectedText within the selection
+		let selectedText = document.getText(selection);
+		
+		// Get user config settings
+		let userConfig = vscode.workspace.getConfiguration('convertToAsciiArt');
+		//let favoriteFont = userConfig.get('favoriteFont');
+		let favoriteHorizontalLayout = userConfig.get<figlet.KerningMethods>('favoriteHorizontalLayout');
+		let favoriteVerticalLayout = userConfig.get<figlet.KerningMethods>('favoriteVerticalLayout');
+
+		// get ASCII text
+		let asciiText = figlet.textSync(selectedText, {font: fontSelection
+												, horizontalLayout: favoriteHorizontalLayout
+												, verticalLayout: favoriteVerticalLayout
+											});
+
+		// compute the range the ASCII art will occupy after replacement
+		let asciiLines = asciiText.split('\n');
+		let asciiRange = new vscode.Range(
+			selection.start.line,
+			selection.start.character,
+			selection.start.line + asciiLines.length - 1,
+			asciiLines[asciiLines.length - 1].length
+		);
+		
+		// replace selected text with ASCII text
+		return editor.edit(editBuilder => {
+			editBuilder.replace(selection, asciiText);
+		}).then(success => success ? asciiRange : undefined);
+	}
+
+	/**
+	 * Convert highlighted text selection into ASCII Art with comment prefix.
+	 * @param asciiFontSelection ASCII Font
+	 */
+	function convertToAsciiArtComment(asciiFontSelection: string) : void
+	{
+		convertToAsciiArt(asciiFontSelection).then(asciiRange => {
+			if (!asciiRange) {
+				return;
+			}
+			var editor = vscode.window.activeTextEditor;
+			if (editor) {
+				editor.selection = new vscode.Selection(asciiRange.start, asciiRange.end);
+				vscode.commands.executeCommand('editor.action.commentLine');
+			}
+		});
 	}
 
 	context.subscriptions.push(disposableConvertToAsciiArt);
 	context.subscriptions.push(disposableConvertToAsciiArt_Favorite);
+	context.subscriptions.push(disposableConvertToAsciiArt_Favorite_Comment);
 }
 
 // this method is called when your extension is deactivated
