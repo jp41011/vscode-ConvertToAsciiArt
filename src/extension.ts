@@ -25,6 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
 	// Select ASCII Art font and convert selected text into ASCII Art.
 	let disposableConvertToAsciiArt = vscode.commands.registerCommand('extension.convertToAsciiArt', () => 
 	{
+		// todo refactor this to use getASCIIQuickPickList()
 		var items: QuickPickItem[] = [];
 		
 		// Get list of fonts and add them to items array.
@@ -42,9 +43,36 @@ export function activate(context: vscode.ExtensionContext) {
 
 	});
 
-	// Get user's favorite settings and convert selected text into ASCII Art.
-	let disposableConvertToAsciiArt_Favorite = vscode.commands.registerCommand('extension.convertToAsciiArt_Favorite', () => 
+	let disposableConvertToAsciiArt_Comment =
+		vscode.commands.registerCommand('extension.convertToAsciiArt_Comment', () => 
+		{
+			let asciiQuickPickList = getASCIIQuickPickList();
+			
+			Window.showQuickPick(asciiQuickPickList).then(function(selectedFont){
+				if(!selectedFont)
+					return;
+
+				convertToAsciiArtComment(selectedFont.label);
+			});
+
+		});
+
+	function getASCIIQuickPickList(): QuickPickItem[]
 	{
+		let quickPickList:QuickPickItem[] = [];
+		
+		figlet.fontsSync().forEach(function(font:string){
+			quickPickList.push({label: font, description: "Use the " + font + " font" });
+		});
+
+		return quickPickList;
+	}
+
+	let disposableConvertToAsciiArt_Favorite = 
+		vscode.commands.registerCommand('extension.convertToAsciiArt_Favorite', () => 
+	{
+		// TODO refactor this function
+
 		// Get user config settings
 		let userConfig = vscode.workspace.getConfiguration('convertToAsciiArt');
 		let favoriteFont = userConfig.get('favoriteFont');
@@ -65,30 +93,33 @@ export function activate(context: vscode.ExtensionContext) {
 			convertToAsciiArtComment(favoriteFont);
 		});
 
-	// Converts selected text into ASCII using the given fontSelection.
-	function convertToAsciiArt(fontSelection: string|undefined): Thenable<vscode.Range | undefined>
+	/**
+	 * Convert current text selection into ASCII art
+	 * @param selectedFont ASCII Font
+	 * @returns 
+	 */
+	async function convertToAsciiArt(selectedFont: string|undefined): Promise<vscode.Range | undefined>
 	{
-		// Get the active text editor
-		let editor = vscode.window.activeTextEditor;
+		let activeEditor = vscode.window.activeTextEditor;
 
-		if (!editor) {
-			return Promise.resolve(undefined);
+		if (!activeEditor) {
+			return undefined;
 		}
 
-		let document = editor.document;
-		let selection = editor.selection;
+		let document = activeEditor.document;
+		let textSelection = activeEditor.selection;
 
-		// Get the selectedText within the selection
-		let selectedText = document.getText(selection);
+		// Get the selectedText within the selection.
+		// todo: rename textSelection and selectedText too close and confusing.
+		let selectedText = document.getText(textSelection);
 		
-		// Get user config settings
 		let userConfig = vscode.workspace.getConfiguration('convertToAsciiArt');
-		//let favoriteFont = userConfig.get('favoriteFont');
+
 		let favoriteHorizontalLayout = userConfig.get<figlet.KerningMethods>('favoriteHorizontalLayout');
 		let favoriteVerticalLayout = userConfig.get<figlet.KerningMethods>('favoriteVerticalLayout');
 
-		// get ASCII text
-		let asciiText = figlet.textSync(selectedText, {font: fontSelection
+		// get ASCII version of selectedText
+		let asciiText:string = figlet.textSync(selectedText, {font: selectedFont
 												, horizontalLayout: favoriteHorizontalLayout
 												, verticalLayout: favoriteVerticalLayout
 											});
@@ -96,28 +127,31 @@ export function activate(context: vscode.ExtensionContext) {
 		// compute the range the ASCII art will occupy after replacement
 		let asciiLines = asciiText.split('\n');
 		let asciiRange = new vscode.Range(
-			selection.start.line,
-			selection.start.character,
-			selection.start.line + asciiLines.length - 1,
+			textSelection.start.line,
+			textSelection.start.character,
+			textSelection.start.line + asciiLines.length - 1,
 			asciiLines[asciiLines.length - 1].length
 		);
 		
 		// replace selected text with ASCII text
-		return editor.edit(editBuilder => {
-			editBuilder.replace(selection, asciiText);
-		}).then(success => success ? asciiRange : undefined);
+		const success = await activeEditor.edit(editBuilder => {
+			editBuilder.replace(textSelection, asciiText);
+		});
+
+		return success ? asciiRange : undefined;
 	}
 
 	/**
-	 * Convert highlighted text selection into ASCII Art with comment prefix.
-	 * @param asciiFontSelection ASCII Font
+	 * Convert text selection into ASCII Art with comment prefix.
+	 * @param selectedFont ASCII Font
 	 */
-	function convertToAsciiArtComment(asciiFontSelection: string) : void
+	function convertToAsciiArtComment(selectedFont: string) : void
 	{
-		convertToAsciiArt(asciiFontSelection).then(asciiRange => {
+		convertToAsciiArt(selectedFont).then(asciiRange => {
 			if (!asciiRange) {
 				return;
 			}
+
 			var editor = vscode.window.activeTextEditor;
 			if (editor) {
 				editor.selection = new vscode.Selection(asciiRange.start, asciiRange.end);
@@ -127,6 +161,7 @@ export function activate(context: vscode.ExtensionContext) {
 	}
 
 	context.subscriptions.push(disposableConvertToAsciiArt);
+	context.subscriptions.push(disposableConvertToAsciiArt_Comment);
 	context.subscriptions.push(disposableConvertToAsciiArt_Favorite);
 	context.subscriptions.push(disposableConvertToAsciiArt_Favorite_Comment);
 }

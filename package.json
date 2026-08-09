@@ -28,6 +28,7 @@
   },
   "activationEvents": [
     "onCommand:extension.convertToAsciiArt",
+    "onCommand:extension.convertToAsciiArt_Comment",
     "onCommand:extension.convertToAsciiArt_Favorite",
     "onCommand:extension.convertToAsciiArt_Favorite_Comment"
   ],
@@ -37,6 +38,10 @@
       {
         "command": "extension.convertToAsciiArt",
         "title": "Convert to ASCII Art"
+      },
+      {
+        "command": "extension.convertToAsciiArt_Comment",
+        "title": "Convert to ASCII Art (Comment)"
       },
       {
         "command": "extension.convertToAsciiArt_Favorite",
