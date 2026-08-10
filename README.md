@@ -36,6 +36,13 @@ To this:
 `Ctrl+Alt+1`: Convert selected text using favorite ASCII font settings.
 ![Activate Extension with favorite font](resources/activateExtension_keyboardShortcut.gif)
 
+## Extension Commands
+|Command|Keybinding|
+|--|--|
+|`Convert to ASCII Art`| `Ctrl+Alt+a` (default)|
+|`Convert to ASCII Art (Comment)`| empty|
+|`Convert to ASCII Art with Favorite Font`| `Ctrl+Alt+1` (default)|
+|`Convert to ASCII Art with Favorite Font (Comment)`| empty|
 
 ## Extension Settings
 
