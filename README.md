@@ -37,11 +37,11 @@ To this:
 ![Activate Extension with favorite font](resources/activateExtension_keyboardShortcut.gif)
 
 ## Extension Commands
-|Command|Keybinding|
+|Command|Keybinding (Default)|
 |--|--|
-|`Convert to ASCII Art`| `Ctrl+Alt+a` (default)|
+|`Convert to ASCII Art`| `Ctrl+Alt+a` - Windows<br/>`Cmd+Opt(Alt)+a` - Mac |
 |`Convert to ASCII Art (Comment)`| empty|
-|`Convert to ASCII Art with Favorite Font`| `Ctrl+Alt+1` (default)|
+|`Convert to ASCII Art with Favorite Font`| `Ctrl+Alt+1` - Windows<br/>`Cmd+Opt(Alt)+1` - Mac|
 |`Convert to ASCII Art with Favorite Font (Comment)`| empty|
 
 ## Extension Settings
